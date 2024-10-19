@@ -62,8 +62,8 @@ class Carrito {
     
     constructor() {
     //Variable que mantiene el estado visible del carrito (Global)
-      this.carritoVisible = false;
-      this.items = [];
+      this.carritoVisible = this.hacerVisibleCarrito()
+      this.items = this.cargarLocalStorage()
       this.inicializarEventos();
     }
     //Espermos que todos los elementos de la pàgina cargen para ejecutar el script(Cargue el html)
@@ -99,8 +99,20 @@ class Carrito {
         button.addEventListener('click', (e) => this.agregarAlCarritoClicked(e));
       }
       document.getElementsByClassName('btn-pagar')[0].addEventListener('click', () => this.pagarClicked());
+      document.getElementsByClassName('btn-vaciar-carrito')[0].addEventListener('click', () => this.vaciarCarrito());
     }
     
+  
+
+    cargarLocalStorage(){
+      const carritoInicial = localStorage.getItem('carrito')
+      return carritoInicial ? JSON.parse(carritoInicial) : []
+    }
+    
+    actualizarCarritoLocalStorage(){
+      localStorage.setItem('carrito', JSON.stringify(this.items))
+    }
+
     mostrarProductosIniciales(){
       // console.log('db simulada:',db)
       db.forEach((producto)=> {
@@ -173,33 +185,18 @@ class Carrito {
       let imagenSrc = itemElement.getElementsByClassName('img-item')[0].src;
       let item = new ItemCarrito(titulo, precio, imagenSrc);
   
-      if (this.items.some(existingItem => existingItem.titulo === titulo)) {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer;
-            toast.onmouseleave = Swal.resumeTimer;
-          }
-        });
-        Toast.fire({
-          icon: "error",
-          title: "El item ya se encuentra en el carrito"
-        });
-        return;
-      }
-  
+      if (this.items.some(existingItem => existingItem.titulo === titulo)) return 
       this.items.push(item);
-      localStorage.setItem('productos',JSON.stringify(item))
+      this.actualizarCarritoLocalStorage()
       this.renderItems();
       this.hacerVisibleCarrito();
     }
   
-    hacerVisibleCarrito() {
-    // Achica el contenedor de las tarjetas para que aparezca el carrito.
+  hacerVisibleCarrito() {
+    // si hay elementos en el localS abre auto el carrito, sino se oculta
+    const existeProductosEnLocalStorage = localStorage.getItem('carrito')
+    if (existeProductosEnLocalStorage ) {
+      // Achica el contenedor de las tarjetas para que aparezca el carrito.
       this.carritoVisible = true;
       let carrito = document.getElementsByClassName('carrito')[0];
       carrito.style.marginRight = '0';
@@ -207,11 +204,14 @@ class Carrito {
       let itemsContainer = document.getElementsByClassName('contenedor-items')[0];
       itemsContainer.style.width = '60%';
     }
+  }
   
     renderItems() {
     // Muestra los productos del carrito en cajitas,luego de recorrer el arreglo.
       let itemsCarrito = document.getElementsByClassName('carrito-items')[0];
       itemsCarrito.innerHTML = '';
+      const productosGuardadosEnLocalStorage = localStorage.getItem('carrito')
+      console.log(JSON.parse(productosGuardadosEnLocalStorage),'productosGuardadosEnLocalStorage')
       this.items.forEach(item => {
         itemsCarrito.append(item.render());
       });
@@ -252,11 +252,18 @@ class Carrito {
       this.items = this.items.filter(item => item.titulo !== titulo);
       this.renderItems();
       this.ocultarCarrito();
+      this.actualizarCarritoLocalStorage()
     }
-  
-    ocultarCarrito() {
+    vaciarCarrito(){
+      localStorage.removeItem('carrito'); // Eliminar el carrito guardado en localStorage
+      this.items = []; // Vaciar el carrito en memoria
+      this.renderItems(); // Actualiza la UI
+      this.actualizarTotalCarrito(); // Actualiza el total a 0
+      this.ocultarCarrito(true); // Ocultar el carrito
+    }
+    ocultarCarrito(vaciarCarro = false) {
     // Cuando el arreglo de productos esta vacio, se oculta el carrito.
-      if (this.items.length === 0) {
+      if (this.items.length === 0 || vaciarCarro) {
         let carrito = document.getElementsByClassName('carrito')[0];
         carrito.style.marginRight = '-100%';
         carrito.style.opacity = '0';
