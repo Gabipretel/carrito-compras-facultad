@@ -179,7 +179,11 @@ header h1{
     font-weight: bold;
     margin-bottom: 10px;
 }
-.carrito-total .btn-pagar{
+.carrito-total .btn-vaciar-carrito {
+    background-color:#0e0e0e;
+    margin: 20px 0 0
+}
+.carrito-total .btn-pagar, .btn-vaciar-carrito{
     display: block;
     width: 100%;
     border: none;
@@ -194,7 +198,7 @@ header h1{
     cursor: pointer;
     transition: .3s;
 }
-.carrito-total .btn-pagar:hover{
+.carrito-total .btn-pagar:hover, .btn-vaciar-carrito:hover{
     scale: 1.05;
 }
 
