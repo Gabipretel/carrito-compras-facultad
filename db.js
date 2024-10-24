@@ -1,4 +1,4 @@
- const db = [
+ export const db = [
     {
         "id": "1",
         "titulo": "New balance",
