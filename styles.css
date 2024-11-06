@@ -5,20 +5,34 @@
     font-family: 'Open Sans';
 }
 body {
-    background-color: #f4d1d1;
+    background: linear-gradient(90deg, #cc9999, #ffffff);
 }
-header{
-    background: url(/img/encabezado.jpg);
-    background-size: cover;
-    background-position: center;
-    height: 300px;
+
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ada9a9; /* Ajusta el color de fondo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave */
+    padding: 12px;
+    text-align: center;
+    z-index: 1000; /* Asegura que esté encima del contenido */
 }
-header h1{
-    text-align: start;
-    font-size: 35px;
-    /* background-color: #000; */
-    color: #fff;
-    padding: 80px 5;
+
+.navbar h1 {
+    margin-bottom: 0;
+    margin-right: 20px;
+    font-size: 1.5rem; /* Ajusta el tamaño del texto */
+    font-weight: bold;
+    scale: 1.05;
+}
+.separator{
+    margin-top: 60px;
 }
 .contenedor{
     max-width: 1200px;
@@ -61,12 +75,14 @@ header h1{
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
+    color: #000;
 }
 .contenedor .contenedor-items .item .precio-item{
     display: block;
     text-align: center;
     font-weight: bold;
     font-size: 22px;
+    color: #000;
 }
 
 .contenedor .contenedor-items .item .boton-item{
@@ -116,10 +132,12 @@ header h1{
     font-weight: bold;
     margin-bottom: 10px;
     text-transform: uppercase;
+    color: #000;
 }
 .carrito .carrito-item .selector-cantidad{
     display: inline-block;
     margin-right: 25px;
+    color: #000;
 }
 .carrito .carrito-item .carrito-item-cantidad{
     border: none;
@@ -129,6 +147,7 @@ header h1{
     width:30px;
     padding: 5px;
     text-align: center;
+    color: #000;
 }
 .carrito .carrito-item .selector-cantidad i{
     font-size: 18px;
@@ -144,7 +163,8 @@ header h1{
     font-weight: bold;
     display: inline-block;
     font-size: 18px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    color: #000;
 }
 .carrito .carrito-item .btn-eliminar{
     position: absolute;
@@ -170,6 +190,9 @@ header h1{
 .carrito-total{
     background-color: #f3f3f3;
     padding: 30px;
+}
+.carrito-precio-total{
+    color: #000;
 }
 .carrito-total .fila{
     display: flex;
