@@ -35,7 +35,10 @@ body {
     margin-top: 60px;
 }
 .slider {
+    width: 100%;
+    max-width: 1200px;
     overflow: hidden;
+    margin: 0 auto;
 }
 .slider--inner {
     display: flex;
@@ -43,11 +46,15 @@ body {
     flex-wrap: nowrap;
     transition:  all 0.3s ease-in;
     align-items: center;
+    width: 100%;
 }
 .promo-img {
-    width: 100%;
+    min-width: 100%;
+    max-height: 500px;
     aspect-ratio: 16/9;
     object-fit: cover;
+    margin-top: 20px;
+    border-radius: 12px;
 }
 .contenedor{
     max-width: 1200px;

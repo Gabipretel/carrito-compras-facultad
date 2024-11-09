@@ -13,7 +13,7 @@ setInterval(() => {
    if(index > imagenes.length - 1){
      index = 0;
    }
-},1000)
+},1500)
 
 // Se crea una clase con los métodos del Local Storage que utilizamos en el carrito (guardar datos,obtener datos y limpiar los datos)
 class LocalStorage {
