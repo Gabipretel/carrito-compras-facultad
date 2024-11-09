@@ -1,5 +1,20 @@
 import { db } from './db.js'
 
+// slider de cibermonday
+let sliderInner = document.querySelector(".slider--inner");
+console.log(sliderInner,'sliderInnersliderInnersliderInnersliderInner')
+let imagenes = sliderInner.querySelectorAll(".promo-img")
+let index = 1;
+
+setInterval(() => {
+  let porcentaje = index * -100;
+  sliderInner.style.transform = "translateX("+ porcentaje +"%)";
+  index++;
+   if(index > imagenes.length - 1){
+     index = 0;
+   }
+},1000)
+
 // Se crea una clase con los métodos del Local Storage que utilizamos en el carrito (guardar datos,obtener datos y limpiar los datos)
 class LocalStorage {
   constructor(storageKey) {

@@ -34,6 +34,21 @@ body {
 .separator{
     margin-top: 60px;
 }
+.slider {
+    overflow: hidden;
+}
+.slider--inner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    transition:  all 0.3s ease-in;
+    align-items: center;
+}
+.promo-img {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
 .contenedor{
     max-width: 1200px;
     padding: 10px;
