@@ -1,20 +1,23 @@
 import { db } from './db.js'
 
 // slider de cibermonday
-let sliderInner = document.querySelector(".slider--inner");
-console.log(sliderInner,'sliderInnersliderInnersliderInnersliderInner')
-let imagenes = sliderInner.querySelectorAll(".promo-img")
-let index = 1;
+const iniciarSlider = () => {
+  let sliderInner = document.querySelector(".slider--inner");
+  console.log(sliderInner, 'sliderInnersliderInnersliderInnersliderInner')
+  let imagenes = sliderInner.querySelectorAll(".promo-img")
+  let index = 1;
 
-setInterval(() => {
-  let porcentaje = index * -100;
-  sliderInner.style.transform = "translateX("+ porcentaje +"%)";
-  index++;
-   if(index > imagenes.length - 1){
-     index = 0;
-   }
-},1500)
+  setInterval(() => {
+    let porcentaje = index * -100;
+    sliderInner.style.transform = "translateX(" + porcentaje + "%)";
+    index++;
+    if (index > imagenes.length - 1) {
+      index = 0;
+    }
+  }, 1500)
+}
 
+iniciarSlider()
 // Se crea una clase con los métodos del Local Storage que utilizamos en el carrito (guardar datos,obtener datos y limpiar los datos)
 class LocalStorage {
   constructor(storageKey) {
@@ -27,6 +30,7 @@ class LocalStorage {
   }
 
   guardarAlLocalStorage(data) {
+    // setea carrito => [{shoes},{shoes}]
     localStorage.setItem(this.storageKey, JSON.stringify(data));
   }
 
@@ -211,7 +215,7 @@ class Carrito extends LocalStorage {
     let itemsCarrito = document.getElementsByClassName('carrito-items')[0];
     itemsCarrito.innerHTML = '';
     const productosGuardadosEnLocalStorage = localStorage.getItem('carrito')
-    console.log(JSON.parse(productosGuardadosEnLocalStorage), 'productosGuardadosEnLocalStorage')
+    // console.log(JSON.parse(productosGuardadosEnLocalStorage), 'productosGuardadosEnLocalStorage')
     this.items.forEach(item => {
       itemsCarrito.append(item.render());
     });

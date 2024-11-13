@@ -27,9 +27,10 @@ body {
 .navbar h1 {
     margin-bottom: 0;
     margin-right: 20px;
-    font-size: 1.5rem; /* Ajusta el tamaño del texto */
+    font-size: 30px; /* Ajusta el tamaño del texto */
     font-weight: bold;
-    scale: 1.05;
+    font-style: italic;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 .separator{
     margin-top: 60px;
@@ -87,9 +88,11 @@ body {
 .contenedor .contenedor-items .item .img-item{
     width: 100%;
     height: 200px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px #000000;
 }
 .contenedor .contenedor-items .item:hover{
-    box-shadow: 0 0 10px #666;
+    box-shadow: 0 4px 10px #000000;
     scale: 1.05;
 }
 .contenedor .contenedor-items .item .titulo-item{
@@ -105,6 +108,7 @@ body {
     font-weight: bold;
     font-size: 22px;
     color: #000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .contenedor .contenedor-items .item .boton-item{
@@ -148,6 +152,7 @@ body {
 }
 .carrito .carrito-item img{
     margin-right: 20px;
+    border-radius: 12px;
 }
 .carrito .carrito-item .carrito-item-titulo{
     display: block;
@@ -155,6 +160,7 @@ body {
     margin-bottom: 10px;
     text-transform: uppercase;
     color: #000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 .carrito .carrito-item .selector-cantidad{
     display: inline-block;
@@ -187,6 +193,7 @@ body {
     font-size: 18px;
     margin-top: 10px;
     color: #000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 .carrito .carrito-item .btn-eliminar{
     position: absolute;
@@ -215,6 +222,7 @@ body {
 }
 .carrito-precio-total{
     color: #000;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 .carrito-total .fila{
     display: flex;
