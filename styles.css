@@ -17,8 +17,9 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #ff8888; /* Ajusta el color de fondo */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave */
+    background-color: #333; 
+    color: #fff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     padding: 12px;
     text-align: center;
     z-index: 1000; /* Asegura que esté encima del contenido */
