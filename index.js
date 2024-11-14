@@ -3,7 +3,6 @@ import { db } from './db.js'
 // slider de cibermonday
 const iniciarSlider = () => {
   let sliderInner = document.querySelector(".slider--inner");
-  console.log(sliderInner, 'sliderInnersliderInnersliderInnersliderInner')
   let imagenes = sliderInner.querySelectorAll(".promo-img")
   let index = 1;
 

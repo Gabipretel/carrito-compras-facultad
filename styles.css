@@ -254,7 +254,21 @@ body {
 .carrito-total .btn-pagar:hover, .btn-vaciar-carrito:hover{
     scale: 1.05;
 }
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    bottom: 0;
+    width: 100%;
+}
 
+.footer-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
 /* SECCION RESPONSIVE */
 @media screen and (max-width: 850px) {
     .contenedor {
